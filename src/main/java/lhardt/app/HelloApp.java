@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HelloApp {
 
 	public static void main(String args[]){
-		SpringAp plication.run(HelloApp.class, args);
+		SpringApplication.run(HelloApp.class, args);
 	}
 }
