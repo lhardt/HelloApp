@@ -11,4 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface SchoolRepository extends JpaRepository<School, Long> {
 	@Query("SELECT sch FROM School sch")
     List<School> findAll();
+
+	@Query("SELECT sch FROM School sch WHERE id=:id")
+    List<School> findById(@Param("id") long id);
+
 }

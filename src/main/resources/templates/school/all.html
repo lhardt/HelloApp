@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			form label{
+				margin-bottom: 10px;
+			}
+			table td, table th{
+				border: 1px solid grey;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Todas as Escolas.</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<td> ID </td>
+					<td> Nome </td>
+					<td> Endereço </td>
+					<td> Ações </td>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr th:each="school: ${list}">
+			        <td th:text="${school.id}" />
+					<td th:text="${school.name}" />
+			        <td th:text="${school.address}" />
+					<td>
+						<a th:href="@{/school/{id}(id=${school.id})}">Ver</a>
+						&nbsp;
+						<a th:href="@{/school/api/{id}(id=${school.id})}">JSON</a>
+					</td>
+			    </tr>
+			</tbody>
+		</table>
+
+		<br />
+
+		<h3>Cadastrar Nova Escola</h3>
+
+		<form method="POST" th:object="${newSchool}" action="/school/new">
+			<label>
+				Nome da Escola
+				<input type="text" name="name" placeholder="Nome" th:field="*{name}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Logradouro
+				<input type="text" name="name" placeholder="Nome" th:field="*{address.street}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Bairro
+				<input type="text" name="name" placeholder="Nome" th:field="*{address.neighbourhood}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Cidade
+				<input type="text" name="name" placeholder="Cidade" th:field="*{address.city}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Estado
+				<input type="text" name="name" placeholder="Estado" th:field="*{address.state}"></input>
+			</label>
+			<br/>
+
+			<input type="submit" value="Enviar"></input>
+			<br/>
+
+		</form>
+
+		<div th:replace="components/menu :: menu" />
+	</body>
+</html>

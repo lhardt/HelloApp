@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
 	<name>HelloApp</name>
 
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -29,10 +28,14 @@
     </build>
 
 	<dependencies>
-		<!-- Foi permitido usar o Spring Boot : obrigado!  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<dependency>

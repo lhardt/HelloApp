@@ -2,7 +2,11 @@ package lhardt.app.school;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import lhardt.app.address.Address;
 
@@ -14,15 +18,23 @@ public class School {
 	@GeneratedValue
 	private long id;
 
-
 	private String name;
-	// private Address address;
 
-	// public School(long id, String name, Address address){
-	public School(long id, String name){
+	// NOTE: a relação não está invertida no diagrama ER?
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_address", referencedColumnName="id")
+	private Address address;
+
+	public School(){
+		this.id = -1;
+		this.name = "";
+	}
+
+	public School(long id, String name, Address address){
+	// public School(long id, String name){
 		this.id = id;
 		this.name = name;
-		// this.address = address;
+		this.address = address;
 	}
 
 
@@ -42,13 +54,13 @@ public class School {
 		this.name = name;
 	}
 
-	// public Address getAddress(){
-	// 	return address;
-	// }
-	//
-	// public void setAddress(Address address){
-	// 	this.address = address;
-	// }
+	public Address getAddress(){
+		return address;
+	}
+
+	public void setAddress(Address address){
+		this.address = address;
+	}
 
 	@Override
 	public boolean equals(Object o){

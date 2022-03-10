@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			form label{
+				margin-bottom: 10px;
+			}
+			table td, table th{
+				border: 1px solid grey;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Mostrando apenas um item:</h1>
+
+		<a th:href="@{/school/api/{id}(id=${school.id})}">Ver em JSON</a>
+
+
+		<form method="POST" th:object="${school}" action="/school/update">
+			<label>
+				Nome da Escola
+				<input type="text" name="name" placeholder="Nome" th:field="*{name}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Logradouro
+				<input type="text" name="name" placeholder="Nome" th:field="*{address.street}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Bairro
+				<input type="text" name="name" placeholder="Nome" th:field="*{address.neighbourhood}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Cidade
+				<input type="text" name="name" placeholder="Cidade" th:field="*{address.city}"></input>
+			</label>
+			<br/>
+
+			<label>
+				Estado
+				<input type="text" name="name" placeholder="Estado" th:field="*{address.state}"></input>
+			</label>
+			<br/>
+
+			<input type="submit" value="Enviar"></input>
+			<br/>
+
+		</form>
+
+
+
+		<div th:replace="components/menu :: menu" />
+
+	</body>
+</html>
